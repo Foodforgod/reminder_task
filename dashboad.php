@@ -15,8 +15,9 @@ $sttr=$conn->query($select);
 $num=$sttr->num_rows;
 
 if (isset($_GET['search'])) {
-	$select="SELECT * FROM attendante where date(date_attendante)='$_GET[search]'";
-    $sttr=$conn->query($select);
+	$select="SELECT * FROM attendante where date(date_attendante)='$_GET[search]'"; or
+	$select= "SELECT * FROM `tasks` WHERE Task like '%".$_GET['search_box']."%'";
+	$sttr=$conn->query($select);
 
 }
 
