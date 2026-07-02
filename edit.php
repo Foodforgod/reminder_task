@@ -1,55 +1,43 @@
-<?php
-include "db.php";
+<?php 
+include 'db.php';
 
-if(isset($_POST['edit_task'])){ 
-    $id = $_GET['id'];
-    $Task = $_POST['Task'];
-    $remind_date = $_POST['remind_date'];
-    $Desc = $_POST['Desc'];
+if (isset($_POST['edit'])) {
+	$id=$_GET['id'];
+	$date_attendante=$_POST['date_attendante'];
 
-    $qry="UPDATE tasks SET Task='$Task', remind_date='$remind_date', `Desc`='$Desc' WHERE Id=$id";
-    $conn->query($qry); 
-    echo "<script>alert('Task updated successfully');
-    window.location.href='dashboad.php';
-    </script>";
-} 
-
-$id = $_GET['id'];
-$qry="SELECT * FROM tasks WHERE Id=$id";
-$sttr = $conn->query($qry);
-$row = $sttr->fetch_assoc();
+	$qry="UPDATE attendante set date_attendante='$date_attendante' where id='$id'";
+	$sttr=$conn->query($qry);
+	echo "<script>alert('edit complete');
+	window.location.href='Stundent_index.php';
+	</script>";
+}
 
 
 
-?>
+$id=$_GET['id'];
+$select="SELECT * FROM attendante where id='$id'";
+$sttr=$conn->query($select);
+$num=$sttr->num_rows;
+$row=$sttr->fetch_assoc();
+
+
+
+
+ ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Task</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Update date</title>
 </head>
 <body>
-    <h1>Edit Task</h1>
-    <form method="post" action="">
-        <label>Task</label> 
-        <br>
-        <input type="text" name="Task" value="<?=$row['Task']?>" />
-
-<br>
-         <label>remind_date</label> 
-         <br>    
-         <input type="date" name="remind_date" value="<?=$row['remind_date']?>" />
-<br>
-        <label>Desc</label> 
-        <br>
-        <input type="text" name="Desc" value="<?=$row['Desc']?>" />
-<br>
-        <button type="submit" name="edit_task">edit task</button>
+	<form method="post" accept="">
+	<h1>Modify date</h1>
+	<label>date-attendante</label>
+	<input type="text" name="date_attendante" value="<?=$row['date_attendante']?>">
+    <br>
+    <button type="submit" name="edit">sumbit</button>
     </form>
-        
-    </body>                 
-
-
-
-</head>
+</body>
+</html>
