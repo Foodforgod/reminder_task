@@ -1,50 +1,54 @@
-<?php
-include "db.php";
+<?php  
+include 'db.php';
 
-if(isset($_POST['add_task'])){ 
-    $Task = $_POST['Task'];
-    $remind_date = $_POST['remind_date'];
-    $Desc = $_POST['Desc'];
 
-    $qry="INSERT INTO tasks(Task,remind_date,`Desc`) VALUES ('$Task','$remind_date','$Desc')";
-    $conn->query($qry); 
-    echo "<script>alert('Task added successfully');
-    window.location.href='dashboad.php';
-    </script>";
-} 
-
+if (isset($_POST['add'])) {
+	$foodname=$_POST['foodname'];
+	$foodtype=$_POST['foodtype'];
+	$foodprice=$_POST['foodprice'];
+	$rating=$_POST['rating'];
+	$qry="INSERT INTO rs_table(foodname,foodtype,foodprice,rating)values('$foodname','$foodtype','$foodprice','$rating')";
+	$sttr=$conn->query($qry);
+	echo"<script>alert('add complete');
+	window.location.href='index.php';
+	</script>";
+}
 
 
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Task</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>restaurent add system</title>
 </head>
 <body>
-    <h1>Add Task</h1>
-    <form method="post" action="">
-        <label>Task</label> 
-        <br>
-        <input type="text" name="Task" />
-
-<br>
-         <label>remind_date</label> 
-         <br>    
-         <input type="date" name="remind_date" />
-<br>
-        <label>Desc</label> 
-        <br>
-        <input type="text" name="Desc" />
-<br>
-        <button type="submit" name="add_task">add task</button>
-    </form>
-        
-    </body>                 
-
-
-
-</head>
+	<form method="post" action="">
+	<h1>Add</h1>
+	<label>foodname</label>
+	<input type="text" name="foodname">
+	<br>
+	<label>foodtype</label>
+	<select name="foodtype">
+		<option value="food">food</option>
+		<option value="drink">drink</option>
+	</select>
+	<br>
+	<label>foodprice</label>
+	<input type="number" name="foodprice">
+	<br>
+	<label>rating</label>
+	<select name="rating">
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+	<br>
+	<button type="submit" name="add">add</button>
+</form>
+</body>
+</html>
