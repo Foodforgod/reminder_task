@@ -21,7 +21,8 @@ $sttr=$conn->query($select);
 $num=$sttr->num_rows;
 $row=$sttr->fetch_assoc();
 
-?>
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

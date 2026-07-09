@@ -14,9 +14,7 @@ if (isset($_POST['add'])) {
 	</script>";
 }
 
-
-
-?>
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

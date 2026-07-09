@@ -22,8 +22,7 @@ if (isset($_GET['search'])) {
     $sttr=$conn->query($select);
 }
 
-
-?>
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
